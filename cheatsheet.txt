@@ -9,3 +9,10 @@ ssh-keygen -t rsa -b 4096 -C "sanyaasharma3214@gmail.com"
 tail <path to id_rsa.pub> # add this key to your github account
 git remote add origin <ssh url.git>
 git push origin master
+
+for updates
+do following steps:
+git status
+git add .
+git commit -m "Added something new"
+git push origin master
