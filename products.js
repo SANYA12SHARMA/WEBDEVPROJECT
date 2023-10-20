@@ -1,3 +1,29 @@
+const popular = [
+{
+    id:0,
+    name:"Soft Furniture",
+    price:150,
+    imgSrc:'./assets/images/popular1.png',
+
+},{
+    id:1,
+    name:"Soft Furniture",
+    price:150,
+    imgSrc:'./assets/images/popular2.png'
+},
+{
+    id:2,
+    name:"Soft Furniture",
+    price:150,
+    imgSrc:'./assets/images/popular3.png'
+},
+{
+    id:3,
+    name:"Soft Furniture",
+    price:150,
+    imgSrc:'./assets/images/popular4.png'
+}
+];
 const products = [
 {
 

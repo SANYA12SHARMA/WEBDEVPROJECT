@@ -14,6 +14,25 @@ menu.onclick = () => {
 const productsEl = document.querySelector(".products-content");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalEl = document.querySelector(".subtotal");
+const popularEl=document.querySelector(".popular-content");
+//render popular
+function renderPopular(){
+    popular.forEach((item)=>{
+        popularEl.innerHTML+=`
+        <div class="box">
+                <img src="${item.imgSrc}" alt="">
+                <div class="box-text">
+                    <div class="title-price">
+                        <h3>${item.name}</h3>
+                        <span>${item.price}</span>
+                    </div>
+                    <a href="#"><i class='bx bx-cart-alt'></i></a>
+                </div>
+            </div>
+        `;
+    });
+};
+renderPopular();
 //RENDER PRODUCTS
 function renderProducts(){
     products.forEach((product)=>{
