@@ -33,7 +33,8 @@ function renderProducts(){
 }
 renderProducts();
 //cart array
-let cartt=[];
+let cartt=JSON.parse(localStorage.getItem("CART")) || [];
+updateCart();
 //ADD TO CART
 function addToCart(id){
     //check if product already exist in cart
@@ -50,6 +51,9 @@ function addToCart(id){
 function updateCart(){
     renderCartItems();
     renderSubTotal();
+
+    //save cart to local storage
+    localStorage.setItem("CART",JSON.stringify(cartt));
 }
 function renderSubTotal(){
     let totalPrice = 0,
