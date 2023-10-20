@@ -69,7 +69,7 @@ function renderCartItems(){
         <img src="${item.imgSrc}" alt="${item.name}">
         <div class="cart-text">
             <h3>${item.name}</h3>
-            <span>${item.price}</span><span><i class='bx bx-trash'></i></span>
+            <span>${item.price}</span><span><i class='bx bx-trash' onclick=" removeItemFromCart(${item.id})"></i></span>
         </div>
         <div>
             <i class="bx bx-chevron-up" onclick="changeNumberOfUnits('minus',${item.id})"></i>
@@ -97,6 +97,13 @@ function changeNumberOfUnits(action,id){
             numberOfUnits,
           };
     });
+    updateCart();
+}
+
+
+//remove item from cart
+function removeItemFromCart(id){
+    cartt=cartt.filter((item) => item.id !==id );
     updateCart();
 }
 //Cart Toggle
