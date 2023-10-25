@@ -61,8 +61,8 @@ function renderHero() {
 renderHero();
 const product = document.querySelector('.product-list');
 function renderProducts() {
-  products.forEach((item) => {
-    product.innerHTML += `
+    products.forEach((item) => {
+        product.innerHTML += `
     <li class="${item.itembelong}">
     <div class="product-card">
       <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
@@ -87,12 +87,30 @@ function renderProducts() {
           <a href="#" class="card-title">${item.name}</a>
         </h3>
         <div class="card-price">
-          <data class="price" value="40">$${item.price}.00</data>
+          <data class="price" value="40">$${item.price}</data>
         </div>
       </div>
     </div>
   </li>
     `;
-  });
+    });
 }
 renderProducts();
+/**
+ * product filter
+ */
+
+const filterBtns = document.querySelectorAll("[data-filter-btn]");
+const filterBox = document.querySelector("[data-filter]");
+
+let lastClickedFilterBtn = filterBtns[0];
+
+const filter = function () {
+    lastClickedFilterBtn.classList.remove("active");
+    this.classList.add("active");
+    lastClickedFilterBtn = this;
+
+    filterBox.setAttribute("data-filter", this.dataset.filterBtn)
+}
+
+addEventOnElem(filterBtns, "click", filter);
