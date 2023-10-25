@@ -59,3 +59,40 @@ function renderHero() {
     });
 }
 renderHero();
+const product = document.querySelector('.product-list');
+function renderProducts() {
+  products.forEach((item) => {
+    product.innerHTML += `
+    <li class="${item.itembelong}">
+    <div class="product-card">
+      <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+        <img src="${item.imgSrc}" width="300" height="300" loading="lazy"
+          alt="Artificial potted plant" class="img-cover">
+        <ul class="card-action-list">
+          <li>
+            <button class="card-action-btn" aria-label="add to cart" title="add to cart">
+              <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </li>
+
+          <li>
+            <button class="card-action-btn" aria-label="add to wishlist" title="add to wishlist">
+              <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </li>
+        </ul>
+      </a>
+      <div class="card-content">
+        <h3 class="h3">
+          <a href="#" class="card-title">${item.name}</a>
+        </h3>
+        <div class="card-price">
+          <data class="price" value="40">$${item.price}.00</data>
+        </div>
+      </div>
+    </div>
+  </li>
+    `;
+  });
+}
+renderProducts();
