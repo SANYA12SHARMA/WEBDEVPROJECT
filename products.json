@@ -1,0 +1,196 @@
+{
+    "items": [
+        {
+            "sys":{"id": "0"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Animi Dolor Pariatur",
+                "price": 10.00,
+                "image":{"fields":{"file":{"url":"./assets/images/product-1.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "1"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Art Deco Home",
+                "price": 30.00,
+                "image":{"fields":{"file":{"url":"./assets/images/product-2.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "2"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Artificial Potted Plant",
+                "price": 40,
+                "image":{"fields":{"file":{"url":"./assets/images/product-3.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "3"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Dark Green Jug",
+                "price": 17.10,
+                "image":{"fields":{"file":{"url":"./assets/images/product-4.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "4"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Drinking Glasses",
+                "price": 21,
+                "image":{"fields":{"file":{"url":"./assets/images/product-5.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "5"},
+            "fields":{
+                "itembelong": "furniture",
+                "name": "Helen Chair",
+                "price": 69.5,
+                "image":{"fields":{"file":{"url":"./assets/images/product-6.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "6"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "High Quality Glass Bottle",
+                "price": 30.10,
+                "image":{"fields":{"file":{"url":"./assets/images/product-7.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "7"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Living Room & BedRoom Lights",
+                "price": 45,
+                "image":{"fields":{"file":{"url":"./assets/images/product-8.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "8"},
+            "fields":{
+                "itembelong": "furniture",
+                "name": "Nancy Chair",
+                "price": 90,
+                "image":{"fields":{"file":{"url":"./assets/images/product-9.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "9"},
+            "fields":{
+                "itembelong": "furniture",
+                "name": "Simple Chair",
+                "price": 40,
+                "image":{"fields":{"file":{"url":"./assets/images/product-10.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "10"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Smooth Disk",
+                "price":46,
+                "image":{"fields":{"file":{"url":"./assets/images/product-11.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "11"},
+            "fields":{
+                "itembelong": "furniture",
+                "name": "Table Black",
+                "price": 67,
+                "image":{"fields":{"file":{"url":"./assets/images/product-12.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "12"},
+            "fields":{
+                "itembelong": "furniture",
+                "name": "Table Wood Pine",
+                "price": 50,
+                "image":{"fields":{"file":{"url":"./assets/images/product-13.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "13"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Tea Pot with Black Tea",
+                "price": 25,
+                "image":{"fields":{"file":{"url":"./assets/images/product-14.jpg"}}}
+            }
+            
+        },
+
+        {
+            "sys":{"id": "14"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Unique Decorative",
+                "price": 15,
+                "image":{"fields":{"file":{"url":"./assets/images/product-15.jpg"}}}
+            }
+            
+        },
+
+        {
+            "sys":{"id": "15"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Vase Of Flowers",
+                "price": 77,
+                "image":{"fields":{"file":{"url":"./assets/images/product-16.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "16"},
+            "fields":{
+                "itembelong": "decoration",
+                "name": "Wood Eggs",
+                "price": 19,
+                "image":{"fields":{"file":{"url":"./assets/images/product-17.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "17"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Wooden Box",
+                "price": 27,
+                "image":{"fields":{"file":{"url":"./assets/images/product-18.jpg"}}}
+            }
+            
+        },
+        {
+            "sys":{"id": "18"},
+            "fields":{
+                "itembelong": "accessory",
+                "name": "Wooden Cups",
+                "price": 29,
+                "image":{"fields":{"file":{"url":"./assets/images/product-19.jpg"}}}
+            }
+            
+        }
+    ]
+}
