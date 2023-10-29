@@ -190,12 +190,12 @@ class UI {
     <img src="${item.image}" alt="">
         <div class="cart-text">
             <h3>${item.name}</h3>
-            <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
+            <span>${item.price}</span><span class="remove" data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
         </div>
         <div>
-            <ion-icon name="remove" data-id=${item.id}></ion-icon>
+            <span class="down"><ion-icon name="remove" data-id=${item.id}></ion-icon></span>
             <p class="item-amount">${item.amount}</p>
-            <ion-icon name="add" data-id=${item.id}></ion-icon>
+            <span class="up"><ion-icon name="add" data-id=${item.id}></ion-icon></span>
         </div>
         </div>
     `;
@@ -227,6 +227,14 @@ class UI {
       this.clearCart();
     })
     //cart functionality
+    cartItems.addEventListener('click',(event) =>{
+      if(event.target.classList.contains('remove')){
+        let removeItem = event.target;
+        let id = removeItem.dataset.id;
+        cartItems.removeChild(removeItem.parentElement.parentElement);
+        this.removeItem(id);
+      }
+    })
   }
   clearCart() {
     let cartItm = cart.map(item => item.id);
@@ -238,6 +246,7 @@ class UI {
     clearCartBtn.onclick = () =>{
       cartDOM.classList.toggle('active');
     }
+    
 
   }
   removeItem(id) {
