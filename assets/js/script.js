@@ -178,7 +178,7 @@ class UI {
         Storage.saveCart(cart);
         this.setCartValues(cart);
         this.addCartItems(cartItem);
-        //
+        
       
       })
     });
