@@ -1,6 +1,13 @@
 // Menu
 let menu = document.querySelector('.menu-icon');
 let nav = document.querySelector('.navbar');
+let cat =document.querySelector('.cart');
+document.querySelector("#cart").onclick = () =>{
+  cat.classList.toggle('active');
+  nav.classList.remove('active');
+  menu.classList.remove('move');
+}
+
 
 menu.onclick = () => {
     nav.classList.toggle('active');
@@ -59,7 +66,7 @@ function renderHero() {
 renderHero();
 const ProductsDOM = document.querySelector(".product-list");
 //initialise cart(getting info from local storage)
-let cart = [];
+// let cart = [];
 //getting Products 
 class Products{
     async getProducts(){
@@ -115,8 +122,25 @@ class UI{
         ProductsDOM.innerHTML = result;
     }
     getBagButtons(){
-      const btns= [...document.querySelectorAll(".card-action-btn")];
-      console.log(btns);
+      const buttons= [...document.querySelectorAll(".card-action-btn")];
+      buttons.forEach(button =>{
+         let id = button.dataset.id;
+        //  let inCart = cart.find(item => item.id === id);
+        //  if(inCart){
+        //   button.innerText = "In Cart";
+        //   button.disabled = true;
+        //  }else{
+        //   button.addEventListener('click',(event)=>{
+        //     event.target.innerText = "In Cart";
+        //     event.target.disabled = true;
+        //     //get product from products
+        //     //add product to the cart
+        //     //save cart in Local Storage
+
+        //   })
+        //  }
+      });
+
     }
 };
 
@@ -142,7 +166,27 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 
 
-
+// let cartt= [];
+// function renderCartItems(){
+//   cartItemsEl.innerHTML=""//clear cart element
+//   products.forEach((item)=>{
+//       cartItemsEl.innerHTML+=`
+//       <div class="cart-box">
+//       <img src="${item.image}" alt="${item.name}">
+//       <div class="cart-text">
+//           <h3>${item.name}</h3>
+//           <span>${item.price}</span><span><i class='bx bx-trash' onclick=" removeItemFromCart(${item.id})"></i></span>
+//       </div>
+//       <div>
+//       <ion-icon name="arrow-forward" aria-hidden="true" onclick="changeNumberOfUnits('minus',${item.id})></ion-icon>
+       
+//           <p class="item-amount">${item.numberOfUnits}</p>
+//           <ion-icon name="arrow-forward" aria-hidden="true" onclick="changeNumberOfUnits('plus',${item.id})></ion-icon>
+//       </div>
+//   </div>
+//       `;
+//   });
+// }
 /**
  * product filter
  */

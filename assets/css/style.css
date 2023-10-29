@@ -206,7 +206,7 @@ body.active {
 \*-----------------------------------*/
 
 .header {
-    position: absolute;
+    position:fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -280,7 +280,7 @@ body.active {
     height: 100%;
     background: rgba(255,255,255,0.74);
     backdrop-filter: blur(4.5px);
-    z-index: 106;
+    z-index: 201;
     display: none;
     transition: 0.3s ease;
 }
@@ -295,6 +295,7 @@ body.active {
     display: flex;
     flex-direction: column;
     max-width: 500px;
+    position: relative;
     margin: 12px;
     width: 100%;
     padding: 20px;
@@ -308,11 +309,7 @@ body.active {
     margin: 1.5rem 0;
 
 }
-.bx-chevron-up,
-.bx-chevron-down {
-  color: var(--main-color);
-  cursor: pointer;
-}
+
 .item-amount {
     text-align: center;
   }
@@ -331,15 +328,27 @@ body.active {
 }
 .cart-box .bx{
     font-size: 20px;
-    color: var(--text-color);
+    color: green;
 }
 .cart-box .bx:hover{
-    color: var(--main-color);
+    color: black;
 }
 .cart-footer{
     letter-spacing: 0.5px;
     text-align: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
 }
+.close-cart {
+    font-size: 3rem;
+    cursor: pointer;
+    position: absolute;
+    top:30px;
+    right: 20px;
+
+  }
+  
 .subtotal{
     text-transform: capitalize;
     margin-bottom: 1rem;
@@ -348,17 +357,18 @@ body.active {
     padding: 1rem 3rem;
     text-transform: uppercase;
     letter-spacing:1px;
-    font-size: 1rem;
-    background: var(--main-color);
-    border: 1px solid var(--bg-color);
+    font-size: 15px;
+    justify-content: center;
+    background:  var(--tan-crayola);
+    border: 1px solid white;
     transition: 0.3s ease;
     cursor: pointer;
+    color: white;
   }
   .banner-btn:hover {
     background: transparent;
-    color: var(--hover-color);
+    color: var(--tan-crayola);
   }
-
 
 
 /*-----------------------------------*\

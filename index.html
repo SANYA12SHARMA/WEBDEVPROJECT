@@ -33,31 +33,14 @@
                     <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
                 </button>
 
-                <button class="header-action-btn" aria-label="favorite list">
-                    <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
-
-                    <span class="btn-badge">0</span>
-                </button>
 
                 <button class="header-action-btn" aria-label="cart" id="cart">
                     <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
 
                     <span class="btn-badge">0</span>
                 </button>
-                <div class="cart">
-                
-                    <div class="cart-content">
-                        <h2>Your cart</h2>
-                        <div class="cart-items">
-                            <!--render html-->
-                    </div>
-                        <div class="cart-footer">
-                       <h3 class="subtotal">Your Total( 0 items): $ 0</h3>          
-                            <button class="clear-cart banner-btn">CLEAR CART</button>
-                        </div>
-                    </div>
-                </div>
-                
+
+
                 <!-- Menu Icon -->
                 <div class="menu-icon">
                     <div class="line1"></div>
@@ -75,7 +58,25 @@
             </div>
 
         </div>
+        <div class="cart">
+
+            <div class="cart-content">
+                <div class="close-cart">
+                    <ion-icon name="close" aria-hidden="true"></ion-icon>
+                </div>
+
+                <h2>Your cart</h2>
+                <div class="cart-items">
+                    <!--render html-->
+                </div>
+                <div class="cart-footer">
+                    <h3 class="subtotal">Your Total( 0 items): $ 0</h3>
+                    <button class="clear-cart banner-btn">CLEAR CART</button>
+                </div>
+            </div>
+        </div>
     </header>
+
     <main>
         <article>
             <!--HERO -->
@@ -297,6 +298,7 @@
 
                 </div>
             </section>
+
             <!-- 
         - #NEWSLETTER
       -->
@@ -460,6 +462,7 @@
     <a href="#top" class="back-top-btn" aria-label="back to top">
         <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
     </a>
+
     <!-- Link to JS -->
     <script src="./assets/js/script.js" defer></script>
     <script src="./assets/js/products.js"></script>
