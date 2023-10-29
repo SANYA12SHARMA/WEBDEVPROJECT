@@ -176,58 +176,18 @@ class UI {
 
         //save cart in Local Storage
         Storage.saveCart(cart);
-
-        //set cart values
         this.setCartValues(cart);
-
-        //display cart item
-        this.addCartItem(cartItem);
-        //show the cart
+        this.addCartItems(cartItem);
+        
+      
       })
     });
 
   }
-  setCartValues(cart) {
-    let tempTotal = 0;
-    let itemsTotal = 0;
-    cart.map((item) => {
-      tempTotal += item.price * item.amount;
-      itemsTotal += item.amount;
-    })
-
-   cartTotal.innerHTML = `Your Total( ${itemsTotal} items): $ ${tempTotal.toFixed(2)}`;
-    console.log(cartTotal, cartItems);
-  }
-  // addCartItem(item){
-  //   cartItems.innerHTML = `
-  //   <div class="cart-box">
-  //                       <img src="${item.image}" alt="">
-  //                       <div class="cart-text">
-  //                           <h3>${item.name}</h3>
-  //                           <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
-  //                       </div>
-  //                       <div>
-  //                           <ion-icon name="remove" data-id=${item.id}></ion-icon>
-  //                           <p class="item-amount">${item.amount}</p>
-  //                           <ion-icon name="add" data-id=${item.id}></ion-icon>
-  //                       </div>
-  //                   </div>
-  //   `;
-  //    console.log(cartItems);
-  // }
-  setupAPP() {
-    cart = Storage.getCart();
-    this.setCartValues(cart);
-    this.populate(cart);
-
-  }
-  populate(cart) {
-
-    cartItems.innerHTML = ""//clear cart element
-    cart.forEach((item) => {
-      cartItems.innerHTML += `
-        <div class="cart-box">
-        <img src="${item.image}" alt="">
+  
+  addCartItems(item){
+    cartItems.innerHTML +=`<div class="cart-box">
+    <img src="${item.image}" alt="">
         <div class="cart-text">
             <h3>${item.name}</h3>
             <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
@@ -237,12 +197,60 @@ class UI {
             <p class="item-amount">${item.amount}</p>
             <ion-icon name="add" data-id=${item.id}></ion-icon>
         </div>
-    </div>
-        `;
-    }
-    );
+        </div>
+    `;
+  }
+  setCartValues(cart) {
+    let tempTotal = 0;
+    let itemsTotal = 0;
+    cart.map((item) => {
+      tempTotal += item.price * item.amount;
+      itemsTotal += item.amount;
+    })
+
+    cartTotal.innerHTML = `Your Total( ${itemsTotal} items): $ ${tempTotal.toFixed(2)}`;
+  }
+  setupAPP() {
+    cart = Storage.getCart();
+    this.setCartValues(cart);
+    this.populate(cart);
+
+  }
+  populate(cart) {
+    cartItems.innerHTML="";
+    cart.forEach((item) => this.addCartItems(item));
 
   };
+  cartLogic() {
+    //clear cart button
+    clearCartBtn.addEventListener('click', () => {
+      this.clearCart();
+    })
+    //cart functionality
+  }
+  clearCart() {
+    let cartItm = cart.map(item => item.id);
+    cartItm.forEach(id => this.removeItem(id));
+    console.log(cartItems.children);
+    while(cartItems.children.length>0){
+      cartItems.removeChild(cartItems.children[0]);
+    }
+    clearCartBtn.onclick = () =>{
+      cartDOM.classList.toggle('active');
+    }
+
+  }
+  removeItem(id) {
+    cart = cart.filter((item) => item.id !== id);
+    this.setCartValues(cart);
+    Storage.saveCart(cart);
+    let button = this.getSingleButton(id);
+    button.disabled=false;
+    button.innerHTML=`<ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>`;
+  }
+  getSingleButton(id){
+    return buttonsDOM.find(button => button.dataset.id===id);
+  }
 };
 
 //Local Storage
@@ -267,12 +275,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
   //setup app
   ui.setupAPP();
+
   //get all products
   products.getProducts().then(products => {
     ui.displayProducts(products);
     Storage.saveProducts(products);//static method
   }).then(() => {
     ui.getBagButtons();
+    //cart logic
+    ui.cartLogic();
   });
 
 });
