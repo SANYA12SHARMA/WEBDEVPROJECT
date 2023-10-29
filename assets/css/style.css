@@ -286,6 +286,7 @@ body.active {
 }
 .cart.active{
     display: flex;
+    
 }
 .cart-items{
     overflow-y: auto;
@@ -314,7 +315,7 @@ body.active {
     text-align: center;
   }
 .cart-box img{
-    width: 100px;
+    width: 120px;
 }
 .cart-text{
     display: grid;
