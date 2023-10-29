@@ -17,7 +17,7 @@ closeCartBtn.onclick = () => {
 
 const clearCartBtn = document.querySelector(".clear-cart");
 
-
+const btnbadge = document.querySelector(".btn-badge");
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".subtotal");
 const cartContent = document.querySelector(".cart-content");
@@ -193,9 +193,10 @@ class UI {
             <span>${item.price}</span><span class="remove" data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
         </div>
         <div>
-            <span class="down"><ion-icon name="remove" data-id=${item.id}></ion-icon></span>
+        <span class="up" data-id=${item.id}><ion-icon name="add" ></ion-icon></span>
+         
             <p class="item-amount">${item.amount}</p>
-            <span class="up"><ion-icon name="add" data-id=${item.id}></ion-icon></span>
+            <span class="down" data-id=${item.id}><ion-icon name="remove" ></ion-icon></span>
         </div>
         </div>
     `;
@@ -207,7 +208,7 @@ class UI {
       tempTotal += item.price * item.amount;
       itemsTotal += item.amount;
     })
-
+    btnbadge.innerText = itemsTotal;
     cartTotal.innerHTML = `Your Total( ${itemsTotal} items): $ ${tempTotal.toFixed(2)}`;
   }
   setupAPP() {
@@ -233,6 +234,31 @@ class UI {
         let id = removeItem.dataset.id;
         cartItems.removeChild(removeItem.parentElement.parentElement);
         this.removeItem(id);
+      }else if(event.target.classList.contains('up')){
+        let addAmount = event.target;
+        let id = addAmount.dataset.id;
+        let tempItem = cart.find(item => item.id === id);
+        tempItem.amount += 1;
+        Storage.saveCart(cart);
+        this.setCartValues(cart);
+        addAmount.nextElementSibling.innerText = tempItem.amount;
+        
+      }else if(event.target.classList.contains('down')){
+        let lowerAmount = event.target;
+        let id = lowerAmount.dataset.id;
+        let tempItem = cart.find(item => item.id === id);
+        tempItem.amount -= 1;
+        if(tempItem.amount > 0){
+          Storage.saveCart(cart);
+          this.setCartValues(cart);
+          lowerAmount.previousElementSibling.innerText = tempItem.amount;
+        }else{
+          cartItems.removeChild(lowerAmount.parentElement.parentElement);
+          this.removeItem(id);
+        }
+        Storage.saveCart(cart);
+        this.setCartValues(cart);
+        addAmount.Eleme.innerText = tempItem.amount;
       }
     })
   }
