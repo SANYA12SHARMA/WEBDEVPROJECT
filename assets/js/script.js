@@ -10,7 +10,7 @@ cartBtn.onclick = () => {
 }
 
 const closeCartBtn = document.querySelector(".close-cart");
-closeCartBtn .onclick=()=>{
+closeCartBtn.onclick = () => {
   cartDOM.classList.toggle('active');
 }
 
@@ -40,7 +40,7 @@ const cartContent = document.querySelector(".cart-content");
 menu.onclick = () => {
   nav.classList.toggle('active');
   menu.classList.toggle('move');
-  
+
 }
 
 /* add event on element */
@@ -97,7 +97,7 @@ renderHero();
 
 const ProductsDOM = document.querySelector(".product-list");
 //initialise cart(getting info from local storage)
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 //buttons
 let buttonsDOM = [];
@@ -130,7 +130,7 @@ class UI {
       result += `
             <li class="${item.itembelong}">
             <div class="product-card">
-              <a href="#" class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
+              <a class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
                 <img src="${item.image}" width="300" height="300" loading="lazy"
                   alt="Artificial potted plant" class="img-cover">
                 <ul class="card-action-list">
@@ -169,16 +169,16 @@ class UI {
         event.target.innerText = "In Cart";
         event.target.disabled = true;
         //get product from products
-        let cartItem ={...Storage.getProduct(id),amount:1};
-       
+        let cartItem = { ...Storage.getProduct(id), amount: 1 };
+
         //add product to the cart
-        cart=[...cart,cartItem];
-      
+        cart = [...cart, cartItem];
+
         //save cart in Local Storage
         Storage.saveCart(cart);
 
         //set cart values
-         this.setCartValues(cart);
+        this.setCartValues(cart);
 
         //display cart item
         this.addCartItem(cartItem);
@@ -187,35 +187,62 @@ class UI {
     });
 
   }
-  setCartValues(cart){
+  setCartValues(cart) {
     let tempTotal = 0;
     let itemsTotal = 0;
     cart.map((item) => {
-      tempTotal += item.price* item.amount;
-      itemsTotal +=item.amount;
+      tempTotal += item.price * item.amount;
+      itemsTotal += item.amount;
     })
-    cartTotal.innerText = parseFloat(tempTotal.toFixed(2));
-    cartItems.innerText = itemsTotal;
-    console.log(cartTotal,cartItems);
+
+   cartTotal.innerHTML = `Your Total( ${itemsTotal} items): $ ${tempTotal.toFixed(2)}`;
+    console.log(cartTotal, cartItems);
   }
-  addCartItem(item){
-    
-    cartItems.innerHTML = `
-    <div class="cart-box">
-                        <img src="${item.image}" alt="">
-                        <div class="cart-text">
-                            <h3>${item.name}</h3>
-                            <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
-                        </div>
-                        <div>
-                            <ion-icon name="remove" data-id=${item.id}>></ion-icon>
-                            <p class="item-amount">${item.amount}</p>
-                            <ion-icon name="add" data-id=${item.id}>></ion-icon>
-                        </div>
-                    </div>
-    `;
-     console.log(cartItems);
+  // addCartItem(item){
+  //   cartItems.innerHTML = `
+  //   <div class="cart-box">
+  //                       <img src="${item.image}" alt="">
+  //                       <div class="cart-text">
+  //                           <h3>${item.name}</h3>
+  //                           <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
+  //                       </div>
+  //                       <div>
+  //                           <ion-icon name="remove" data-id=${item.id}></ion-icon>
+  //                           <p class="item-amount">${item.amount}</p>
+  //                           <ion-icon name="add" data-id=${item.id}></ion-icon>
+  //                       </div>
+  //                   </div>
+  //   `;
+  //    console.log(cartItems);
+  // }
+  setupAPP() {
+    cart = Storage.getCart();
+    this.setCartValues(cart);
+    this.populate(cart);
+
   }
+  populate(cart) {
+
+    cartItems.innerHTML = ""//clear cart element
+    cart.forEach((item) => {
+      cartItems.innerHTML += `
+        <div class="cart-box">
+        <img src="${item.image}" alt="">
+        <div class="cart-text">
+            <h3>${item.name}</h3>
+            <span>${item.price}</span><span data-id=${item.id}><ion-icon name="trash"></ion-icon></span>
+        </div>
+        <div>
+            <ion-icon name="remove" data-id=${item.id}></ion-icon>
+            <p class="item-amount">${item.amount}</p>
+            <ion-icon name="add" data-id=${item.id}></ion-icon>
+        </div>
+    </div>
+        `;
+    }
+    );
+
+  };
 };
 
 //Local Storage
@@ -223,19 +250,23 @@ class Storage {
   static saveProducts(products) {
     localStorage.setItem("products", JSON.stringify(products));
   }
-  static getProduct(id){
+  static getProduct(id) {
     let products = JSON.parse(localStorage.getItem('products'));
-    return products.find(product => product.id===id);
+    return products.find(product => product.id === id);
   }
-  static saveCart(cart){
-    localStorage.setItem("cart",JSON.stringify(cart));
+  static saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+  static getCart() {
+    return localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
   }
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
-
+  //setup app
+  ui.setupAPP();
   //get all products
   products.getProducts().then(products => {
     ui.displayProducts(products);
@@ -245,9 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
-
-
-
 
 
 /**

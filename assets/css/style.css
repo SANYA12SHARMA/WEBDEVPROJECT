@@ -296,7 +296,7 @@ body.active {
     display: flex;
     flex-direction: column;
     max-width: 500px;
-    position: relative;
+
     margin: 12px;
     width: 100%;
     padding: 20px;
@@ -603,7 +603,7 @@ body.active {
     transition: var(--transition-1);
 }
 
-.product-card .card-action-btn:is(:hover, :focus) {
+.product-card .card-action-btn:is(:hover) {
     color: var(--tan-crayola);
 }
 
