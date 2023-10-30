@@ -1,5 +1,9 @@
 // Menu
 let menu = document.querySelector('.menu-icon');
+menu.onclick = () => {
+  nav.classList.toggle('active');
+  menu.classList.toggle('move');
+}
 let nav = document.querySelector('.navbar');
 const cartDOM = document.querySelector(".cart");
 const cartBtn = document.querySelector("#cart");
@@ -8,75 +12,23 @@ cartBtn.onclick = () => {
   nav.classList.remove('active');
   menu.classList.remove('move');
 }
-
 const closeCartBtn = document.querySelector(".close-cart");
 closeCartBtn.onclick = () => {
   cartDOM.classList.toggle('active');
 }
-
-
 const clearCartBtn = document.querySelector(".clear-cart");
-
 const btnbadge = document.querySelector(".btn-badge");
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".subtotal");
 const cartContent = document.querySelector(".cart-content");
 
-// Function to open the cart and disable scrolling
-// function openCart() {
-//     cat.style.display = 'block';
-//     document.body.style.overflow = 'hidden'; // Disable scrolling
-// }
 
-// // // Function to close the cart and re-enable scrolling
-// function closeCart() {
-//     cat.style.display = 'none';
-//     document.body.style.overflow = 'auto'; // Re-enable scrolling
-// }
-
-// // Attach event listeners for user interactions
-// document.getElementById('.cart').addEventListener('click', openCart);
-//  document.getElementById('close').addEventListener('click', closeCart);
-menu.onclick = () => {
-  nav.classList.toggle('active');
-  menu.classList.toggle('move');
-
-}
-
-/* add event on element */
-
-const addEventOnElem = function (elem, type, callback) {
-  if (elem.length > 1) {
-    for (let i = 0; i < elem.length; i++) {
-      elem[i].addEventListener(type, callback);
-    }
-  } else {
-    elem.addEventListener(type, callback);
-  }
-}
-/* header & back top btn active when window scroll down to 100px */
-
-const header = document.querySelector(".header");
-const backTopBtn = document.querySelector(".back-top-btn");
-
-const showElemOnScroll = function () {
-  if (window.scrollY > 100) {
-    header.classList.add("active");
-    backTopBtn.classList.add("active");
-  } else {
-    header.classList.remove("active");
-    backTopBtn.classList.remove("active");
-  }
-}
-
-addEventOnElem(window, "scroll", showElemOnScroll);
 const heroo = document.querySelector('.hero-list');
 function renderHero() {
   hero.forEach((item) => {
     heroo.innerHTML += `
     <li class="${item.itsClass}">
     <div class="hero-card">
-
       <figure class="card-banner img-holder" style="--width: ${item.imgWid}; --height:  ${item.imgHeight};">
         <img src="${item.imgSrc}" width="${item.imgWid}" height="${item.imgHeight}" alt="Art Deco Home" class="img-cover">
       </figure>
@@ -93,8 +45,6 @@ function renderHero() {
   });
 }
 renderHero();
-
-
 const ProductsDOM = document.querySelector(".product-list");
 //initialise cart(getting info from local storage)
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -170,23 +120,17 @@ class UI {
         event.target.disabled = true;
         //get product from products
         let cartItem = { ...Storage.getProduct(id), amount: 1 };
-
         //add product to the cart
         cart = [...cart, cartItem];
-
         //save cart in Local Storage
         Storage.saveCart(cart);
         this.setCartValues(cart);
         this.addCartItems(cartItem);
-        
-      
       })
     });
-
   }
-  
-  addCartItems(item){
-    cartItems.innerHTML +=`<div class="cart-box">
+  addCartItems(item) {
+    cartItems.innerHTML += `<div class="cart-box">
     <img src="${item.image}" alt="">
         <div class="cart-text">
             <h3>${item.name}</h3>
@@ -215,79 +159,72 @@ class UI {
     cart = Storage.getCart();
     this.setCartValues(cart);
     this.populate(cart);
-
   }
   populate(cart) {
-    cartItems.innerHTML="";
+    cartItems.innerHTML = "";
     cart.forEach((item) => this.addCartItems(item));
-
   };
   cartLogic() {
     //clear cart button
-    clearCartBtn.addEventListener('click', () => {
+    clearCartBtn.onclick = () => {
       this.clearCart();
-    })
+    }
     //cart functionality
-    cartItems.addEventListener('click',(event) =>{
-      if(event.target.classList.contains('remove')){
-        let removeItem = event.target;
-        let id = removeItem.dataset.id;
-        cartItems.removeChild(removeItem.parentElement.parentElement);
+    cartItems.onclick = (event) => {
+      const { target } = event; // Destructure the event object(event.target)
+      const { classList, dataset } = target; // Destructure the classList and dataset properties
+      const id = dataset.id;
+      if (classList.contains("remove")) {
         this.removeItem(id);
-      }else if(event.target.classList.contains('up')){
-        let addAmount = event.target;
-        let id = addAmount.dataset.id;
-        let tempItem = cart.find(item => item.id === id);
+      } else if (classList.contains("up")) {
+        const { nextElementSibling } = target;
+        const tempItem = cart.find((item) => item.id === id);
         tempItem.amount += 1;
         Storage.saveCart(cart);
         this.setCartValues(cart);
-        addAmount.nextElementSibling.innerText = tempItem.amount;
-        
-      }else if(event.target.classList.contains('down')){
-        let lowerAmount = event.target;
-        let id = lowerAmount.dataset.id;
-        let tempItem = cart.find(item => item.id === id);
+        nextElementSibling.innerText = tempItem.amount;
+      } else if (classList.contains("down")) {
+        const { previousElementSibling } = target;
+        const tempItem = cart.find((item) => item.id === id);
         tempItem.amount -= 1;
-        if(tempItem.amount > 0){
+        if (tempItem.amount > 0) {
           Storage.saveCart(cart);
           this.setCartValues(cart);
-          lowerAmount.previousElementSibling.innerText = tempItem.amount;
-        }else{
-          cartItems.removeChild(lowerAmount.parentElement.parentElement);
+          previousElementSibling.innerText = tempItem.amount;
+        } else {
+          const { parentElement } = target;
+          cartItems.removeChild(parentElement.parentElement);
           this.removeItem(id);
         }
         Storage.saveCart(cart);
         this.setCartValues(cart);
-        addAmount.Eleme.innerText = tempItem.amount;
       }
-    })
+    }
   }
   clearCart() {
     let cartItm = cart.map(item => item.id);
     cartItm.forEach(id => this.removeItem(id));
     console.log(cartItems.children);
-    while(cartItems.children.length>0){
+    while (cartItems.children.length > 0) {
       cartItems.removeChild(cartItems.children[0]);
     }
-    clearCartBtn.onclick = () =>{
-      cartDOM.classList.toggle('active');
-    }
+    clearCartBtn.onclick = () => {cartDOM.classList.remove('active');
+  this.clearCart();}
     
-
   }
   removeItem(id) {
     cart = cart.filter((item) => item.id !== id);
     this.setCartValues(cart);
+    this.populate(cart);
     Storage.saveCart(cart);
     let button = this.getSingleButton(id);
-    button.disabled=false;
-    button.innerHTML=`<ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>`;
+    button.disabled = false;
+    button.innerHTML = `<ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>`;
   }
-  getSingleButton(id){
-    return buttonsDOM.find(button => button.dataset.id===id);
+  getSingleButton(id) {
+    return buttonsDOM.find(button => button.dataset.id === id);
   }
 };
-
 //Local Storage
 class Storage {
   static saveProducts(products) {
@@ -310,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const products = new Products();
   //setup app
   ui.setupAPP();
-
   //get all products
   products.getProducts().then(products => {
     ui.displayProducts(products);
@@ -320,25 +256,31 @@ document.addEventListener("DOMContentLoaded", () => {
     //cart logic
     ui.cartLogic();
   });
-
 });
+/* header & back top btn active when window scroll down to 100px */
+const header = document.querySelector(".header");
+const backTopBtn = document.querySelector(".back-top-btn");
+const showElemOnScroll = function () {
+  if (window.scrollY > 100) {
+    header.classList.add("active");
+    backTopBtn.classList.add("active");
+  } else {
+    header.classList.remove("active");
+    backTopBtn.classList.remove("active");
+  }
+}
+window.onscroll = showElemOnScroll;
 
-
-/**
- * product filter
- */
-
+/** * product filter */
 const filterBtns = document.querySelectorAll("[data-filter-btn]");
 const filterBox = document.querySelector("[data-filter]");
-
 let lastClickedFilterBtn = filterBtns[0];
-
 const filter = function () {
   lastClickedFilterBtn.classList.remove("active");
   this.classList.add("active");
   lastClickedFilterBtn = this;
-
   filterBox.setAttribute("data-filter", this.dataset.filterBtn)
 }
-
-addEventOnElem(filterBtns, "click", filter);
+filterBtns.forEach((btn) => {
+  btn.onclick = filter;
+});
