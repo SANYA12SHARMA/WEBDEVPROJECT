@@ -17,37 +17,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
-
 </head>
 
 <body id="top">
-    <!--HEADER-->
+
     <header class="header">
         <div class="container">
-
             <a href="#" class="logo">Home Decor Hub...</a>
-
             <div class="header-action">
-
-                <button class="header-action-btn" aria-label="user">
+                <button class="header-action-btn">
                     <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
                 </button>
-
-
-                <button class="header-action-btn" aria-label="cart" id="cart">
+                <button class="header-action-btn" id="cart">
                     <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
-
                     <span class="btn-badge">0</span>
                 </button>
-
-
-                <!-- Menu Icon -->
++
                 <div class="menu-icon">
                     <div class="line1"></div>
                     <div class="line2"></div>
                     <div class="line3"></div>
                 </div>
-                <!--NAVBAR-->
 
                 <ul class="navbar">
                     <li><a href="#home">Home</a></li>
@@ -56,19 +46,14 @@
                     <li><a href="#blogs">Blogs</a></li>
                 </ul>
             </div>
-
         </div>
         <div class="cart">
-
             <div class="cart-content">
                 <div class="close-cart">
                     <ion-icon name="close" aria-hidden="true"></ion-icon>
-
                 </div>
-
                 <h2>Your cart</h2>
                 <div class="cart-items">
-
                     <!--render html-->
                 </div>
                 <div class="cart-footer">
@@ -81,24 +66,16 @@
 
     <main>
         <article>
-            <!--HERO -->
-            <section class="section hero" id="home" aria-label="home">
+            <section class="section hero" id="home">
                 <div class="container">
-
                     <ul class="hero-list">
                         <!--render html-->
-
                     </ul>
-
                 </div>
             </section>
-
-            <!--ABOUT-->
-            <section class="section about" id="about" aria-label="about">
+            <section class="section about" id="about">
                 <div class="container">
-
                     <h2 class="section-title">Home Decor Hub</h2>
-
                     <p class="section-text">
                         When you start with a portrait and search for a pure form, a clear volume, through successive
                         eliminations,
@@ -108,109 +85,72 @@
                         finishes with the
                         portrait.
                     </p>
-
                     <div class="about-card">
                         <figure class="card-banner img-holder" style="--width: 1170; --height: 450;">
                             <img src="./assets/images/about-banner.jpg" width="1170" height="450" loading="lazy"
                                 alt="Home Decor Hub promo" class="img-cover">
                         </figure>
-
-                        <button class="play-btn" aria-label="play video">
+                        <button class="play-btn" >
                             <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon>
                         </button>
                     </div>
-
                 </div>
             </section>
-            <!-- PRODUCTS-->
-            <section class="section product" id="product" aria-label="product">
+            <section class="section product" id="product" >
                 <div class="container">
-
                     <div class="title-wrapper">
                         <h2 class="h2 section-title">Popular Products</h2>
-
                         <ul class="filter-btn-list">
-
                             <li class="filter-btn-item">
                                 <button class="filter-btn active" data-filter-btn="all">All Products</button>
                             </li>
-
                             <li class="filter-btn-item">
                                 <button class="filter-btn" data-filter-btn="accessory">Accessory</button>
                             </li>
-
                             <li class="filter-btn-item">
                                 <button class="filter-btn" data-filter-btn="decoration">Decoration</button>
                             </li>
-
                             <li class="filter-btn-item">
                                 <button class="filter-btn" data-filter-btn="furniture">Furniture</button>
                             </li>
-
                         </ul>
                     </div>
-
                     <ul class="grid-list product-list" data-filter="all">
                         <!--render html-->
                     </ul>
-
                 </div>
             </section>
-            <!--BLOG-->
-            <section class="section blog" id="blog" aria-label="blog">
+            <section class="section blog" id="blog">
                 <div class="container">
-
                     <div class="title-wrapper">
                         <h2 class="h2 section-title">Explore our blog</h2>
-
                         <a href="#" class="btn-link">
                             <span class="span">View All</span>
-
                             <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
                         </a>
                     </div>
-
                     <ul class="grid-list">
-
                         <li>
                             <div class="blog-card">
-
                                 <div class="card-banner img-holder" style="--width: 374; --height: 243;">
                                     <img src="./assets/images/blog-1.jpg" width="374" height="243" loading="lazy"
                                         alt="Unique products that will impress your home." class="img-cover">
-
                                     <a href="#" class="card-btn">
                                         <span class="span">Read more</span>
-
                                         <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
-
                                 <div class="card-content">
-
                                     <h3 class="h3">
                                         <a href="#" class="card-title">Unique products.</a>
                                     </h3>
-
                                     <ul class="card-meta-list">
-
                                         <li class="card-meta-item">
                                             <time class="card-meta-text" datetime="2022-09-27">November 27,
                                                 2022</time>
                                         </li>
-
-                                        <li class="card-meta-item">
-                                            <a href="#" class="card-meta-text">Admin</a>
-                                        </li>
-
-                                        <li class="card-meta-item">
-                                            in <a href="#" class="card-meta-text">deco</a>
-                                        </li>
-
                                     </ul>
-
                                 </div>
-
                             </div>
                         </li>
                         <li>
@@ -218,256 +158,132 @@
                                 <div class="card-banner img-holder" style="--width: 374; --height: 243;">
                                     <img src="./assets/images/blog-2.jpg" width="374" height="243" loading="lazy"
                                         alt="Navy Blue & White Striped Area Rugs" class="img-cover">
-
                                     <a href="#" class="card-btn">
                                         <span class="span">Read more</span>
-
                                         <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
-
                                 <div class="card-content">
-
                                     <h3 class="h3">
                                         <a href="#" class="card-title">Navy Blue & White Striped Area Rugs</a>
                                     </h3>
-
                                     <ul class="card-meta-list">
-
                                         <li class="card-meta-item">
                                             <time class="card-meta-text" datetime="2022-09-25">November 25,
                                                 2022</time>
                                         </li>
-
-                                        <li class="card-meta-item">
-                                            <a href="#" class="card-meta-text">Admin</a>
-                                        </li>
-
-                                        <li class="card-meta-item">
-                                            in <a href="#" class="card-meta-text">deco</a>
-                                        </li>
-
                                     </ul>
-
                                 </div>
-
                             </div>
                         </li>
-
                         <li>
                             <div class="blog-card">
-
                                 <div class="card-banner img-holder" style="--width: 374; --height: 243;">
                                     <img src="./assets/images/blog-3.jpg" width="374" height="243" loading="lazy"
                                         alt="White Coated Staircase Floating" class="img-cover">
-
                                     <a href="#" class="card-btn">
                                         <span class="span">Read more</span>
-
                                         <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
                                     </a>
                                 </div>
-
                                 <div class="card-content">
-
                                     <h3 class="h3">
                                         <a href="#" class="card-title">White Coated Staircase Floating</a>
                                     </h3>
-
                                     <ul class="card-meta-list">
-
                                         <li class="card-meta-item">
                                             <time class="card-meta-text" datetime="2022-09-18">November 18,
                                                 2022</time>
                                         </li>
-
-                                        <li class="card-meta-item">
-                                            <a href="#" class="card-meta-text">Admin</a>
-                                        </li>
-
-                                        <li class="card-meta-item">
-                                            in <a href="#" class="card-meta-text">deco</a>
-                                        </li>
-
                                     </ul>
-
                                 </div>
-
                             </div>
                         </li>
-
                     </ul>
-
                 </div>
             </section>
-
-            <!-- 
-        - #NEWSLETTER
-      -->
-
-            <section class="section newsletter" aria-label="newsletter">
-                <div class="container">
-
-                    <div class="newsletter-card">
-
-                        <div class="card-content">
-                            <h2 class="h2 section-title">Our Newsletter</h2>
-
-                            <p class="section-text">
-                                Subscribe our newsletter and get discount 50% off
-                            </p>
-                        </div>
-
-                        <form action="" class="card-form">
-                            <input type="email" name="email_address" placeholder="Your email address" required
-                                class="email-field">
-
-                            <button type="submit" class="newsletter-btn" aria-label="subscribe">
-                                <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                            </button>
-                        </form>
-
-                    </div>
-
-                </div>
-            </section>
-
         </article>
     </main>
-
-
     </article>
-
-
     </main>
-    <!-- 
-    - #FOOTER
-  -->
-
+    <!-- #FOOTER -->
     <footer class="footer">
         <div class="container">
-
             <div class="footer-top section">
-
                 <div class="footer-brand">
-
                     <a href="#" class="logo">Home Decor Hub</a>
-
                     <ul>
-
                         <li class="footer-list-item">
                             <ion-icon name="location-sharp" aria-hidden="true"></ion-icon>
-
                             <address class="address">
                                 Home Decor Hub, India
                             </address>
                         </li>
-
                         <li class="footer-list-item">
                             <ion-icon name="call-sharp" aria-hidden="true"></ion-icon>
-
                             <a href="tel:+1234567890" class="footer-link">+1234567890</a>
                         </li>
-
                         <li>
                             <ul class="social-list">
-
                                 <li>
                                     <a href="#" class="social-link">
                                         <ion-icon name="logo-facebook"></ion-icon>
                                     </a>
                                 </li>
-
                                 <li>
                                     <a href="#" class="social-link">
                                         <ion-icon name="logo-twitter"></ion-icon>
                                     </a>
                                 </li>
-
                                 <li>
                                     <a href="#" class="social-link">
                                         <ion-icon name="logo-tumblr"></ion-icon>
                                     </a>
                                 </li>
-
                             </ul>
                         </li>
-
                     </ul>
-
                 </div>
-
                 <ul class="footer-list">
-
                     <li>
                         <p class="footer-list-title">Help & Information</p>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">Help & Contact Us</a>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">Online Stores</a>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">Terms & Conditions</a>
                     </li>
-
                 </ul>
-
                 <ul class="footer-list">
-
                     <li>
                         <p class="footer-list-title">About Us</p>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">About Us</a>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">FAQ Page</a>
                     </li>
-
                     <li>
                         <a href="#" class="footer-link">Contact Us</a>
                     </li>
-
                 </ul>
-
-                <div class="footer-list">
-
-                    <p class="footer-list-title">Newsletter</p>
-
-                    <form action="" class="footer-form">
-                        <input type="email" name="email_address" placeholder="Your email address" required
-                            class="email-field">
-
-                        <button type="submit" class="footer-form-btn">
-                            <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                        </button>
-                    </form>
-
-                    <div class="wrapper">
-
-                        <a href="#" class="footer-link">Term & Condition</a>
-                        <a href="#" class="footer-link">Policy</a>
-                        <a href="#" class="footer-link">Map</a>
-                    </div>
-                </div>
             </div>
         </div>
     </footer>
 
-    <a href="#top" class="back-top-btn" aria-label="back to top">
+    <a href="#top" class="back-top-btn">
         <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
     </a>
 
     <!-- Link to JS -->
     <script src="./assets/js/script.js" defer></script>
     <script src="./assets/js/products.js"></script>
+
     <!--ionicon link-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
