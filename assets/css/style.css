@@ -279,7 +279,7 @@ body.active {
     width: 100%;
     height: 100%;
     background: rgba(255,255,255,0.74);
-    backdrop-filter: blur(4.5px);
+    backdrop-filter: blur(0.012px);
     z-index: 201;
     display: none;
     transition: 0.3s ease;

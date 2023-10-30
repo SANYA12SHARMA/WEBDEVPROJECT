@@ -1,29 +1,28 @@
 // Menu
 let menu = document.querySelector('.menu-icon');
+let nav = document.querySelector('.navbar');
 menu.onclick = () => {
   nav.classList.toggle('active');
   menu.classList.toggle('move');
 }
-let nav = document.querySelector('.navbar');
 const cartDOM = document.querySelector(".cart");
-const cartBtn = document.querySelector("#cart");
+const cartBtn = document.querySelector("#cart-btn");
 cartBtn.onclick = () => {
   cartDOM.classList.toggle('active');
-  nav.classList.remove('active');
-  menu.classList.remove('move');
+  document.body.style.overflow = "hidden";
 }
 const closeCartBtn = document.querySelector(".close-cart");
 closeCartBtn.onclick = () => {
   cartDOM.classList.toggle('active');
+  document.body.style.overflow = "auto";
 }
 const clearCartBtn = document.querySelector(".clear-cart");
 const btnbadge = document.querySelector(".btn-badge");
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".subtotal");
 const cartContent = document.querySelector(".cart-content");
-
-
 const heroo = document.querySelector('.hero-list');
+
 function renderHero() {
   hero.forEach((item) => {
     heroo.innerHTML += `
@@ -47,8 +46,7 @@ function renderHero() {
 renderHero();
 const ProductsDOM = document.querySelector(".product-list");
 //initialise cart(getting info from local storage)
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
+let cart = [];
 //buttons
 let buttonsDOM = [];
 //getting Products 
@@ -56,12 +54,9 @@ class Products {
   async getProducts() {
     try {
       let result = await fetch('products.json');
-      let data = await result.json();
-      let products = data.items;
+      let products = await result.json();
       products = products.map(item => {
-        const { itembelong, name, price } = item.fields;
-        const { id } = item.sys;
-        const image = item.fields.image.fields.file.url;
+        const { itembelong, name, price, id, image } = item;
         return { itembelong, name, price, id, image };
       });
       return products;
@@ -75,9 +70,9 @@ class Products {
 //Display Products
 class UI {
   displayProducts(products) {
-    let result = '';
+    ProductsDOM.innerHTML = '';
     products.forEach(item => {
-      result += `
+      ProductsDOM.innerHTML += `
             <li class="${item.itembelong}">
             <div class="product-card">
               <a class="card-banner img-holder has-before" style="--width: 300; --height: 300;">
@@ -103,7 +98,6 @@ class UI {
           </li>
             `;
     });
-    ProductsDOM.innerHTML = result;
   }
   getBagButtons() {
     const buttons = [...document.querySelectorAll(".card-action-btn")];
@@ -162,6 +156,10 @@ class UI {
   }
   populate(cart) {
     cartItems.innerHTML = "";
+    if (cart.length == 0) {
+      this.clearCart();
+      document.body.style = "overflow:auto";
+    }
     cart.forEach((item) => this.addCartItems(item));
   };
   cartLogic() {
@@ -204,16 +202,19 @@ class UI {
   clearCart() {
     let cartItm = cart.map(item => item.id);
     cartItm.forEach(id => this.removeItem(id));
-    console.log(cartItems.children);
-    while (cartItems.children.length > 0) {
-      cartItems.removeChild(cartItems.children[0]);
+    cartDOM.classList.remove('active');
+    document.body.style = "overflow:auto";
+    clearCartBtn.onclick = () => {
+      this.clearCart();
     }
-    clearCartBtn.onclick = () => {cartDOM.classList.remove('active');
-  this.clearCart();}
-    
+
   }
   removeItem(id) {
     cart = cart.filter((item) => item.id !== id);
+    if (cart.length == 0) {
+      cartDOM.classList.toggle('active');
+      document.body.style.overflow = "auto";
+    }
     this.setCartValues(cart);
     this.populate(cart);
     Storage.saveCart(cart);

@@ -8,15 +8,15 @@
     <title>Home Decor Hub - A Quality Furniture</title>
     <meta name="title" content="Home Decor Hub - Get Quality Furniture">
     <meta name="description" content="This is an eCommerce Website">
+
     <!--Favicon-->
-    <link rel="shortcut icon" href="./fav-icon.png" type="image/x-icon">
-    <!--Link to css-->
+    <link rel="shortcut icon" href="./fav-icon.png" type="image/png">
+
     <link rel="stylesheet" href="./assets/css/style.css">
     <!--google font link-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body id="top">
@@ -28,7 +28,7 @@
                 <button class="header-action-btn">
                     <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
                 </button>
-                <button class="header-action-btn" id="cart">
+                <button class="header-action-btn" id="cart-btn">
                     <ion-icon name="bag-handle-outline" aria-hidden="true"></ion-icon>
                     <span class="btn-badge">0</span>
                 </button>
@@ -42,28 +42,28 @@
                 <ul class="navbar">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#blogs">Blogs</a></li>
+                    <li><a href="#product">Products</a></li>
+                    <li><a href="#blog">Blogs</a></li>
                 </ul>
             </div>
         </div>
-        <div class="cart">
-            <div class="cart-content">
-                <div class="close-cart">
-                    <ion-icon name="close" aria-hidden="true"></ion-icon>
-                </div>
-                <h2>Your cart</h2>
-                <div class="cart-items">
-                    <!--render html-->
-                </div>
-                <div class="cart-footer">
-                    <h3 class="subtotal">Your Total( 0 items): $ 0</h3>
-                    <button class="clear-cart banner-btn">CLEAR CART</button>
-                </div>
+
+    </header>
+    <div class="cart">
+        <div class="cart-content">
+            <div class="close-cart">
+                <ion-icon name="close" aria-hidden="true"></ion-icon>
+            </div>
+            <h2>Your cart</h2>
+            <div class="cart-items">
+                <!--render html-->
+            </div>
+            <div class="cart-footer">
+                <h3 class="subtotal">Your Total( 0 items): $ 0</h3>
+                <button class="clear-cart banner-btn">CLEAR CART</button>
             </div>
         </div>
-    </header>
-
+    </div>
     <main>
         <article>
             <section class="section hero" id="home">
@@ -90,13 +90,13 @@
                             <img src="./assets/images/about-banner.jpg" width="1170" height="450" loading="lazy"
                                 alt="Home Decor Hub promo" class="img-cover">
                         </figure>
-                        <button class="play-btn" >
+                        <button class="play-btn">
                             <ion-icon name="play-circle-outline" aria-hidden="true"></ion-icon>
                         </button>
                     </div>
                 </div>
             </section>
-            <section class="section product" id="product" >
+            <section class="section product" id="product">
                 <div class="container">
                     <div class="title-wrapper">
                         <h2 class="h2 section-title">Popular Products</h2>
@@ -290,7 +290,3 @@
 </body>
 
 </html>
-<!--
-    What kind of server is localhost?
-Localhost is the hostname or the computer that is currently in use to run a program, in which the computer has the role as a virtual server. In web development, you can develop a server by editing the code in the localhost and exporting your data to the server.
--->
