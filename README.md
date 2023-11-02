@@ -24,6 +24,6 @@ Home Decor Hub is a furniture website developed to provide customers with a seam
 ## Getting Started
 
 Clone the repository: 
-`git clone https://github.com/SANYA12SHARMA/C-Project.git`
+`git clone https://github.com/SANYA12SHARMA/WEBDEVPROJECT.git`
 
 
