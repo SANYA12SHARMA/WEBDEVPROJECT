@@ -12,7 +12,9 @@ Home Decor Hub is a furniture website developed to provide customers with a seam
 
 ## Technologies Used
 -**HTML5, CSS for the frontend.**
+
 -**JavaScript (ES6) for the shopping cart functionality.**
+
 -**Responsive design using media queries and CSS Flexbox/Grid.**
 
 
