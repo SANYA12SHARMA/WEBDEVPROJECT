@@ -5,6 +5,30 @@ menu.onclick = () => {
   nav.classList.toggle('active');
   menu.classList.toggle('move');
 }
+
+// Hero
+const heroList = document.querySelector('.hero-list');
+function renderHero() {
+  hero.forEach((item) => {
+    heroList.innerHTML += `
+    <li class="${item.itsClass}">
+    <div class="hero-card">
+      <figure class="card-banner img-holder" style="--width: ${item.imgWid}; --height:  ${item.imgHeight};">
+        <img src="${item.imgSrc}" width="${item.imgWid}" height="${item.imgHeight}" alt="Art Deco Home" class="img-cover">
+      </figure>
+      <div class="card-content">
+        <h3>
+          <a href="#" class="card-title">${item.name}</a>
+        </h3>
+        <p class="card-text">${item.itembelong}</p>
+      </div>
+    </div>
+  </li>`;
+  });
+}
+renderHero();
+
+// Cart
 const cartDOM = document.querySelector(".cart");
 const cartBtn = document.querySelector("#cart-btn");
 cartBtn.onclick = () => {
@@ -21,35 +45,10 @@ const btnbadge = document.querySelector(".btn-badge");
 const cartItems = document.querySelector(".cart-items");
 const cartTotal = document.querySelector(".subtotal");
 const cartContent = document.querySelector(".cart-content");
-const heroo = document.querySelector('.hero-list');
 
-function renderHero() {
-  hero.forEach((item) => {
-    heroo.innerHTML += `
-    <li class="${item.itsClass}">
-    <div class="hero-card">
-      <figure class="card-banner img-holder" style="--width: ${item.imgWid}; --height:  ${item.imgHeight};">
-        <img src="${item.imgSrc}" width="${item.imgWid}" height="${item.imgHeight}" alt="Art Deco Home" class="img-cover">
-      </figure>
-      <div class="card-content">
-        <h3>
-          <a href="#" class="card-title">${item.name}</a>
-        </h3>
-
-        <p class="card-text">${item.itembelong}</p>
-      </div>
-
-    </div>
-  </li>`;
-  });
-}
-renderHero();
 const ProductsDOM = document.querySelector(".product-list");
-//initialise cart(getting info from local storage)
 let cart = [];
-//buttons
 let buttonsDOM = [];
-//getting Products 
 class Products {
   async getProducts() {
     try {
@@ -67,7 +66,6 @@ class Products {
   }
 };
 
-//Display Products
 class UI {
   displayProducts(products) {
     ProductsDOM.innerHTML = '';
@@ -132,7 +130,6 @@ class UI {
         </div>
         <div>
         <span class="up" data-id=${item.id}><ion-icon name="add" ></ion-icon></span>
-         
             <p class="item-amount">${item.amount}</p>
             <span class="down" data-id=${item.id}><ion-icon name="remove" ></ion-icon></span>
         </div>
@@ -163,7 +160,6 @@ class UI {
     cart.forEach((item) => this.addCartItems(item));
   };
   cartLogic() {
-    //clear cart button
     clearCartBtn.onclick = () => {
       this.clearCart();
     }
@@ -207,7 +203,6 @@ class UI {
     clearCartBtn.onclick = () => {
       this.clearCart();
     }
-
   }
   removeItem(id) {
     cart = cart.filter((item) => item.id !== id);
@@ -246,7 +241,6 @@ class Storage {
 document.addEventListener("DOMContentLoaded", () => {
   const ui = new UI();
   const products = new Products();
-  //setup app
   ui.setupAPP();
   //get all products
   products.getProducts().then(products => {
@@ -258,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ui.cartLogic();
   });
 });
-/* header & back top btn active when window scroll down to 100px */
+
 const header = document.querySelector(".header");
 const backTopBtn = document.querySelector(".back-top-btn");
 const showElemOnScroll = function () {
@@ -272,7 +266,7 @@ const showElemOnScroll = function () {
 }
 window.onscroll = showElemOnScroll;
 
-/** * product filter */
+/* Filtration Of Products */
 const filterBtns = document.querySelectorAll("[data-filter-btn]");
 const filterBox = document.querySelector("[data-filter]");
 let lastClickedFilterBtn = filterBtns[0];
